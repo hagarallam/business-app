@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Product</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        .mar{
+            margin: 20px;
+        }
+    </style>
+</head>
+<body style="background-color: #eee">
+<h2 style="text-align: center" class="display-4 mar">Add A Product</h2>
+<hr>
+<form method="post" style="margin: 20px;" th:action="@{/products}" th:object="${product}">
+
+    <input type="hidden" th:field="*{id}">
+    <div class="form-group">
+        <label for="productType">Select Product Type</label>
+        <select th:field="*{productType}"class="form-control" id="productType" required="true">
+            <option th:each="type : ${productsType}"   th:value="${type}" th:text="${type.getProductType()}"></option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="color">Enter Product Color</label>
+        <input type="text" th:field="*{color}" class="form-control" id="color" placeholder="red" required="true">
+    </div>
+
+    <div class="form-group">
+        <label for="productSize">Select Product Size</label>
+        <select th:field="*{size}"class="form-control" id="productSize" required="true">
+            <option  th:each="eachSize : ${sizeEnum}"   th:value="${eachSize}" th:text="${eachSize.getSize()}"></option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="buyingPrice">Enter Buying Price</label>
+        <input type="number" th:field="*{buyingPrice}" class="form-control" id="buyingPrice" placeholder="350 EG" required="true">
+    </div>
+    <div class="form-group">
+        <label for="sellingPrice">Enter Selling Price</label>
+        <input type="number" th:field="*{sellingPrice}" class="form-control" id="sellingPrice" placeholder="400 EG" required="true">
+    </div>
+    <div class="form-group">
+        <label for="description">Enter Description</label>
+        <textarea th:field="*{description}" class="form-control" id="description" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary mb-3">Save</button>
+    <a class="btn btn-secondary mb-3" th:href="@{/products}">Back to Products List</a>
+</form>
+
+</body>
+</html>
