@@ -11,3 +11,13 @@ CREATE TABLE `PRODUCTS`(
                            size  varchar(255) null ,
                            description  varchar(255) null
 );
+
+CREATE TABLE `ORDERS`(
+                         id INT NOT NULL AUTO_INCREMENT primary KEY ,
+                         items_count double not null ,
+                         total_price double not null ,
+                         total_profit double not null ,
+                         customer_phone varchar(255) default null ,
+                         creation_time datetime not null ,
+                         description varchar(255) default null
+);

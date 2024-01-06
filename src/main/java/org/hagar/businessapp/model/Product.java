@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hagar.businessapp.enums.Colors;
 import org.hagar.businessapp.enums.ProductsType;
 import org.hagar.businessapp.enums.Size;
 
@@ -27,7 +28,8 @@ public class Product {
     private ProductsType productType ;
 
     @Column(name = "color")
-    private String color ;
+    @Enumerated(EnumType.STRING)
+    private Colors color ;
 
     @Column(name = "size")
     @Enumerated(EnumType.STRING)
@@ -44,7 +46,7 @@ public class Product {
     @Column(name = "description")
     private String description ;
 
-    public Product(ProductsType productType, String color, Size size, BigDecimal buyingPrice, BigDecimal sellingPrice, String description) {
+    public Product(ProductsType productType, Colors color, Size size, BigDecimal buyingPrice, BigDecimal sellingPrice, String description) {
         this.productType = productType;
         this.color = color;
         this.size = size;

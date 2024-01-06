@@ -13,18 +13,25 @@
     }
   </style>
 </head>
-<body style="background-color: #ffffe5">
+<body style="background-color: #eee">
 
-<div>
-  <div class="container">
-    <h1 style="font-family: 'Pacifico', cursive; text-align: center; font-size: 60px" class="mar"> Welcome Kareem </h1>
-  </div>
-  <div class="container">
-    <form method="GET" th:action="@{/products/}">
-      <button type="submit" class="btn btn-primary mar" style="color: white">Go to Products Section</button>
-    </form>
-  </div>
-
+<div class="container">
+  <h1 style="font-family: 'Pacifico', cursive; text-align: center; font-size: 60px" class="mar"> Welcome Kareem </h1>
+  <hr>
+  <ul class="nav nav-pills nav-fill">
+    <li class="nav-item">
+      <a class="nav-link active" th:href="@{/products}">Products Section</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" th:href="@{/orders}">Orders Section</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#">Statistics</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#">Info</a>
+    </li>
+  </ul>
 </div>
 
 </body>

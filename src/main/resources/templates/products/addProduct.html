@@ -25,9 +25,12 @@
     </div>
 
     <div class="form-group">
-        <label for="color">Enter Product Color</label>
-        <input type="text" th:field="*{color}" class="form-control" id="color" placeholder="red" required="true">
+        <label for="color">Select Product Color</label>
+        <select th:field="*{color}"class="form-control" id="color" required="true">
+            <option th:each="eachColor : ${colorsEnum}"   th:value="${eachColor}" th:text="${eachColor.getColorName()}"></option>
+        </select>
     </div>
+
 
     <div class="form-group">
         <label for="productSize">Select Product Size</label>

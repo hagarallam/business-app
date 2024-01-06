@@ -1,5 +1,6 @@
 package org.hagar.businessapp.controllers;
 
+import org.hagar.businessapp.enums.Colors;
 import org.hagar.businessapp.enums.ProductsType;
 import org.hagar.businessapp.enums.Size;
 import org.hagar.businessapp.model.Product;
@@ -27,7 +28,7 @@ public class ProductsController {
         ModelAndView modelAndView = new ModelAndView();
         List<Product> productList = productsService.getAll();
         modelAndView.addObject("productList",productList);
-        modelAndView.setViewName("products");
+        modelAndView.setViewName("products/products");
         return modelAndView;
     }
 
@@ -36,19 +37,20 @@ public class ProductsController {
         Product product = new Product();
         model.addAttribute("product",product);
         setEnumAttr(model);
-        return "addProduct";
+        return "products/addProduct";
     }
     @GetMapping("/updateForm")
     public String updateProductForm(@RequestParam(name = "productId") int productId, Model model) {
         Product product = productsService.findById(productId);
         model.addAttribute("product",product);
         setEnumAttr(model);
-        return "addProduct";
+        return "products/addProduct";
     }
 
     private  void setEnumAttr(Model model) {
         model.addAttribute("productsType", ProductsType.values());
         model.addAttribute("sizeEnum", Size.values());
+        model.addAttribute("colorsEnum", Colors.values());
     }
 
     @PostMapping("")
